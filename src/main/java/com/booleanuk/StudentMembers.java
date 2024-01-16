@@ -1,8 +1,55 @@
 package com.booleanuk;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
 public class StudentMembers {
+    public String[] students;
+    public Random randomizer;
+    public String[] validInputs;
+
+    public StudentMembers(){
+        this.students = new String[]{"Kari", "Jonas", "Ola"};
+        this.randomizer = new Random();
+    }
 
 
+    public String run(Scanner input){
+        System.out.println("List of student: ");
+        System.out.println(Arrays.toString(students));
+        System.out.println("What do you need? ");
+        System.out.println("A. Choose a random student");
+        System.out.println("B. Make random pair groups");
+        System.out.println("C. Make random groups of four");
+        System.out.println("Q. Exit");
+
+        String string = input.toString().toLowerCase();
+        do {
+            if (string.equals("a")){
+                return randomStudent();
+            }
+            else if (string.equals("b")){
+                break;
+            }
+            else if (string.equals("c")){
+                break;
+            }
+            else if (string.equals("q")){
+                System.out.println("Shutting down");
+                return "Shutting down";
+            }
+            else {
+                return "Please use valid syntax";
+            }
+
+        }while(true);
+        return " ";
+    }
+
+    public String randomStudent(){
+        return this.students[this.randomizer.nextInt(this.students.length)];
+    }
 }
 
 /*
